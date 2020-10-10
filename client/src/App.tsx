@@ -1,14 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import './style.css';
 
 /* pages */
-import Main from './pages/Main';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/" render={() => <Main></Main>}></Route>
+        <Route path="/" render={() => <Home></Home>}></Route>
       </Switch>
     </div>
   );
