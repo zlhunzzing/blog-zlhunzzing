@@ -8,7 +8,6 @@ function ProfileComponent() {
     <div
       style={{
         width: '20%',
-        height: '700px',
         borderRight: '1px solid rgb(230, 230, 230)',
         textAlign: 'center',
       }}

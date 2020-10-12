@@ -7,7 +7,6 @@ function HeaderComponent() {
   return (
     <header
       style={{
-        textAlign: 'center',
         margin: '25px',
       }}
     >
