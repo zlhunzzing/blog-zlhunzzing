@@ -13,11 +13,9 @@ body {
   background-color: rgb(50, 50, 50);
   list-style-type: none;
 }
-.nav-item {
-  padding: 5px;
-  cursor: pointer;
-}
 .nav-item a {
+  display: block;
+  padding: 3px;
   text-align: center;
   text-decoration: none;
   color: white;
