@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function NavigationComponent() {
   return (
     <nav>
       <ul className="nav-container">
         <li className="nav-item">
-          <a href="1">글 작성</a>
+          <Link to="post-new">글 작성</Link>
         </li>
         {/* <li className="nav-item">
           <a href="2">2</a>

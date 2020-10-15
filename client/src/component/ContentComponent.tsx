@@ -5,7 +5,7 @@ function ContentComponent() {
     <div
       style={{
         width: '100%',
-        height: '700px',
+        minHeight: '700px',
         textAlign: 'center',
       }}
     ></div>
