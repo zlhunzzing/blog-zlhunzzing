@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './style.css';
 
@@ -10,10 +10,8 @@ import PostNew from './pages/PostNew';
 import NavigationComponent from './component/NavigationComponent';
 
 function App() {
-  const isAdmin = useState(true);
-
   return (
-    <div className="App" style={isAdmin ? { paddingTop: '30px' } : {}}>
+    <div className="App">
       <NavigationComponent></NavigationComponent>
       <Switch>
         <Route path="/post-new" render={() => <PostNew></PostNew>}></Route>
