@@ -9,7 +9,7 @@ export const sign_in = createAction(SIGN_IN);
 
 const initialState = {
   // token: null,
-  isAdmin: true,
+  isAdmin: false,
 };
 
 export default function Auth(state: any = initialState, action: any) {
