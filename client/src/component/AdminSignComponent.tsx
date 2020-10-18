@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import store from '..';
 import * as handleActions from '../module/Handle'
+import * as api from '../api/Admin'
 
 function AdminSignComponent() {
   const [password, setPassword] = useState('')
@@ -19,7 +20,9 @@ function AdminSignComponent() {
         onSubmit={(e) => {
           e.preventDefault();
           store.dispatch(handleActions.close_modal())
-          console.log(password)
+          if(password) {
+            api.signup(password)
+          }
         }}
         style={{
           position: 'relative',
