@@ -1,4 +1,5 @@
 import React from 'react';
+import Category from '../component/Category';
 import HeaderComponent from '../component/HeaderComponent';
 import HrComponent from '../component/HrComponent';
 import PostNewComponent from '../component/PostNewComponent';
@@ -12,6 +13,7 @@ function PostNew() {
       <PostNewComponent></PostNewComponent>
       <HrComponent></HrComponent>
       <ProfileComponent></ProfileComponent>
+      <Category></Category>
     </div>
   );
 }

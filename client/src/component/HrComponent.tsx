@@ -6,8 +6,8 @@ function HrComponent() {
       className="HrComponent"
       style={{
         margin: '0 auto',
-        marginBottom: '30px',
-        width: '80%',
+        marginBottom: '10px',
+        width: '100%',
         borderTop: '1px solid rgb(230, 230, 230)',
       }}
     ></div>

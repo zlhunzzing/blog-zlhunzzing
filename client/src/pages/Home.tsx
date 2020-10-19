@@ -1,4 +1,5 @@
 import React from 'react';
+import Category from '../component/Category';
 import ContentComponent from '../component/ContentComponent';
 import HeaderComponent from '../component/HeaderComponent';
 import HrComponent from '../component/HrComponent';
@@ -12,6 +13,7 @@ function Home() {
       <ContentComponent></ContentComponent>
       <HrComponent></HrComponent>
       <ProfileComponent></ProfileComponent>
+      <Category></Category>
     </div>
   );
 }

@@ -5,21 +5,16 @@ function ProfileComponent() {
   const [content, setContent] = useState('안녕하세요');
 
   return (
-    <div
-      style={{
-        width: '20%',
-        borderRight: '1px solid rgb(230, 230, 230)',
-        textAlign: 'center',
-      }}
-    >
+    <span
+      className="menu">
       <div
         className="profileImage"
         style={{
           margin: '0 auto',
-          marginTop: '15px',
+          marginTop: '20px',
           width: '140px',
           height: '140px',
-          borderRadius: '100px',
+          // borderRadius: '100px',
           backgroundColor: 'rgb(240, 240, 240)',
         }}
       ></div>
@@ -56,7 +51,7 @@ function ProfileComponent() {
           <button className="profileInput">확인</button>
         </form>
       )}
-    </div>
+    </span>
   );
 }
 
