@@ -4,7 +4,7 @@ function Category() {
   const catogorist = useState(["list1","list2"])[0]
 
   return (
-    <div className="menu" style={{textAlign: 'left'}}>
+    <div className="menu-blog" style={{textAlign: 'left'}}>
       <div style={{
         padding: '10px',
         fontWeight: 'bold',

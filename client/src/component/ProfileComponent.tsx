@@ -6,7 +6,7 @@ function ProfileComponent() {
 
   return (
     <span
-      className="menu">
+      className="menu-blog">
       <div
         className="profileImage"
         style={{

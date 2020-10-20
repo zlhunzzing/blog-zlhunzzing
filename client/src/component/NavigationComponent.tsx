@@ -15,7 +15,13 @@ function NavigationComponent() {
         <div style={{ paddingTop: '30px' }}>
           <ul className="nav-container" style={{ position: 'fixed' }}>
             <li className="nav-item">
-              <Link to="post-new">글 작성</Link>
+              <Link to="">방문</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="admin">관리</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="post-new">글쓰기</Link>
             </li>
           </ul>
         </div>
@@ -26,7 +32,8 @@ function NavigationComponent() {
               <Link to="/e" onClick={(e)=>{
                 e.preventDefault()
                 store.dispatch(handleActions.open_modal())
-              }}>로그인</Link>
+              }}
+              >로그인</Link>
             </li>
           </ul>
         </div>

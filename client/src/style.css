@@ -32,10 +32,25 @@ body {
   color: rgb(75, 75, 75);
 }
 
-.menu {
+.menu-blog {
   float: left;
   width: 170px;
   border: 1px solid rgb(170, 170, 170);
   border-radius: 3px;
   margin: 10px;
+}
+
+ul li {
+  display: inline;
+}
+
+.option-admin a {
+  padding: 3px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.option-admin a:hover {
+  padding: 3px;
+  color: rgb(75, 75, 75);
 }
