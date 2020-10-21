@@ -9,6 +9,7 @@ import PostNew from './pages/PostNew';
 
 /* component */
 import NavigationComponent from './component/NavigationComponent';
+import AdminInfo from './pages/AdminInfo';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <NavigationComponent></NavigationComponent>
       <Switch>
         <Route path="/post-new" render={() => <PostNew></PostNew>}></Route>
+        <Route path="/admin/info" render={() => <AdminInfo></AdminInfo>}></Route>
         <Route path="/admin" render={() => <Admin></Admin>}></Route>
         <Route path="/" render={() => <Home></Home>}></Route>
       </Switch>
