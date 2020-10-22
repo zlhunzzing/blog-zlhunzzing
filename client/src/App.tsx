@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './style.css';
+import * as userAPI from './api/User'
 
 /* pages */
 import Home from './pages/Home';
@@ -12,6 +13,9 @@ import NavigationComponent from './component/NavigationComponent';
 import AdminInfo from './pages/AdminInfo';
 
 function App() {
+  useEffect(() => {
+    userAPI.getInfo()
+  })
   return (
     <div className="App">
       <NavigationComponent></NavigationComponent>

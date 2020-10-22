@@ -1,10 +1,14 @@
-import express from "express";
-import { createConnection } from "typeorm";
-import * as bodyParser from "body-parser";
+import express, { Request, Response } from 'express';
+import { createConnection } from 'typeorm';
+import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
 
-import { Request, Response } from "express";
+/* model */
+import { BlogModel } from './model/BlogModel';
+
+const blogModel = new BlogModel();
+
 
 const PORT = 3001;
 const app = express();
@@ -21,15 +25,24 @@ createConnection()
       }),
     );
 
-    app.get("/", (req, res) => {
-      res.send("hello");
+    app.get('/', (req, res) => {
+      res.send('hello');
     });
 
-    app.post("/admin/signup", async (req: Request, res: Response) => {
-      if(req.body.password === process.env.ADMIN_PASSWORD) {
+    app.get('/info', async (req, res) => {
+      try {
+        const info = await blogModel.findWithId(1);
+        res.status(200).send(info);
+      } catch (err) {
+        res.status(409).send(err.message);
+      }
+    });
+
+    app.post('/admin/signup', async (req: Request, res: Response) => {
+      if (req.body.password === process.env.ADMIN_PASSWORD) {
         res.json(true);
       } else {
-        res.json(false)
+        res.json(false);
       }
     });
 

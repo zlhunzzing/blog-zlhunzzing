@@ -10,7 +10,7 @@ const initialState = {
   isModal: false,
 };
 
-export default function Auth(state: any = initialState, action: any) {
+export default function Handle(state: any = initialState, action: any) {
   switch (action.type) {
     case OPEN_MODAL:
       return {

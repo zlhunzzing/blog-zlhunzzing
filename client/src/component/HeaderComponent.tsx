@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 function HeaderComponent() {
   const history = useState(useHistory())[0];
+  const title = useSelector((state: any) => state.Info.title);
 
   return (
     <header
@@ -22,7 +24,7 @@ function HeaderComponent() {
           history.push('/');
         }}
       >
-        김지훈 블로그
+        {title}
       </h2>
       <h4
         style={{
