@@ -1,8 +1,9 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import { createConnection } from 'typeorm';
 import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
+import adminRouter from './route/admin';
 
 /* model */
 import { BlogModel } from './model/BlogModel';
@@ -38,13 +39,7 @@ createConnection()
       }
     });
 
-    app.post('/admin/signup', async (req: Request, res: Response) => {
-      if (req.body.password === process.env.ADMIN_PASSWORD) {
-        res.json(true);
-      } else {
-        res.json(false);
-      }
-    });
+    app.use('/admin', adminRouter);
 
     app.listen(PORT, () => {
       // console.log(`Server listening on port ${PORT}`)

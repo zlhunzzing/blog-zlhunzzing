@@ -21,7 +21,7 @@ function AdminSignComponent() {
           e.preventDefault();
           store.dispatch(handleActions.close_modal())
           if(password) {
-            api.signup(password)
+            api.signin(password)
           }
         }}
         style={{

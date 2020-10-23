@@ -8,7 +8,6 @@ export function getInfo() {
   return axios
     .get(`http://${serverIp}/info`)
     .then((res) => {
-        console.log(res.data)
         store.dispatch(infoActions.set_title({ title: res.data.title }))
         store.dispatch(infoActions.set_intro({ intro: res.data.intro }))
       })

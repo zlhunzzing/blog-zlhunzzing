@@ -12,7 +12,7 @@ export class BlogModel {
     return result;
   }
 
-  // async save(insertData) {
-  //   await getRepository(BlogEntity).save(insertData);
-  // }
+  async save(insertData) {
+    await getRepository(BlogEntity).save(insertData);
+  }
 }

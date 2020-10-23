@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import HrComponent from '../component/HrComponent';
+import * as adminAPI from '../api/Admin'
 
 function Admin() {
   const [title, setTitle] = useState('')
@@ -23,7 +24,7 @@ function Admin() {
       <br></br>
       <form onSubmit={(e) => {
         e.preventDefault()
-        console.log(title, intro)
+        adminAPI.setInfo(title, intro)
       }}>
         <div>
           <h5 style={{ float: 'left', paddingLeft: '20px', margin: '0' }}>블로그명</h5>
