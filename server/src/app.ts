@@ -3,6 +3,7 @@ import { createConnection } from 'typeorm';
 import * as bodyParser from 'body-parser';
 import cors from 'cors';
 import logger from 'morgan';
+import guestRouter from './route/guest';
 import adminRouter from './route/admin';
 
 /* model */
@@ -30,14 +31,7 @@ createConnection()
       res.send('hello');
     });
 
-    app.get('/info', async (req, res) => {
-      try {
-        const info = await blogModel.findWithId(1);
-        res.status(200).send(info);
-      } catch (err) {
-        res.status(409).send(err.message);
-      }
-    });
+    app.use('/guest', guestRouter);
 
     app.use('/admin', adminRouter);
 

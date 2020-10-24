@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import * as guestAPI from '../api/Guest'
 
 function Category() {
-  const catogorist = useState(["list1","list2"])[0]
+  const [category, setCategory] = useState([{name: 'list1'}, {name: 'list2'}])
+
+  useEffect(() => {
+    guestAPI.getCategory(setCategory)
+  }, [])
 
   return (
     <div className="menu-blog" style={{textAlign: 'left'}}>
@@ -29,12 +34,13 @@ function Category() {
             listStyleType: 'none',
             paddingLeft: '5px'
           }}>
-        {catogorist.map((name: any, id: number) => (
+        {category.map((list: any, id: number) => (
           <li
             key={id} 
             style={{
+              display: 'block',
               margin: '5px'
-          }}>{name}</li>
+          }}>{list.name}</li>
         ))}
       </ul>
     </div>
