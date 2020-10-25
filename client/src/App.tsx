@@ -6,15 +6,17 @@ import * as guestAPI from './api/Guest'
 /* pages */
 import Home from './pages/Home';
 import Admin from './pages/Admin'
+import AdminInfo from './pages/AdminInfo';
+import AdminCategory from './pages/AdminCategory';
 import PostNew from './pages/PostNew';
 
 /* component */
 import NavigationComponent from './component/NavigationComponent';
-import AdminInfo from './pages/AdminInfo';
 
 function App() {
   useEffect(() => {
     guestAPI.getInfo()
+    guestAPI.getCategory()
   })
   
   return (
@@ -22,6 +24,7 @@ function App() {
       <NavigationComponent></NavigationComponent>
       <Switch>
         <Route path="/post-new" render={() => <PostNew></PostNew>}></Route>
+        <Route path="/admin/category" render={() => <AdminCategory></AdminCategory>}></Route>
         <Route path="/admin/info" render={() => <AdminInfo></AdminInfo>}></Route>
         <Route path="/admin" render={() => <Admin></Admin>}></Route>
         <Route path="/" render={() => <Home></Home>}></Route>

@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import * as guestAPI from '../api/Guest'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Category() {
-  const [category, setCategory] = useState([{name: 'list1'}, {name: 'list2'}])
-
-  useEffect(() => {
-    guestAPI.getCategory(setCategory)
-  }, [])
+  const category = useSelector((state: any) => state.Info.category);
 
   return (
     <div className="menu-blog" style={{textAlign: 'left'}}>
@@ -17,7 +13,7 @@ function Category() {
       }}>Category</div>
 
       <div
-      style={{
+       style={{
         margin: '0 auto',
         width: '90%',
         borderTop: '1px solid rgb(230, 230, 230)',

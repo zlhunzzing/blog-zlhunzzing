@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Dispatch } from 'react';
 import store from '..';
 import * as infoActions from '../module/Info'
 
@@ -15,11 +14,12 @@ export function getInfo() {
     .catch((err) => console.log(err.response));
 }
 
-export function getCategory(setCategory: Dispatch<any>) {
+export function getCategory() {
   return axios
     .get(`http://${serverIp}/guest/category`)
     .then((res) => {
-        setCategory(res.data)
+        // setCategory(res.data)
+        store.dispatch(infoActions.set_category({ category: res.data }))
     })
     .catch((err) => console.log(err.response));
 }

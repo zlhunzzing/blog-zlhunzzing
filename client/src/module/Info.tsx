@@ -2,15 +2,19 @@ import { createAction } from 'redux-actions';
 
 const SET_TITLE = 'App/Info/SET_TITLE';
 const SET_INTRO = 'App/Info/SET_INTRO';
+const SET_CATEGORY = 'App/Info/SET_CATEGORY';
 
 export const set_title = createAction(SET_TITLE);
 // payload: {title: title <string>}
 export const set_intro = createAction(SET_INTRO)
+export const set_category = createAction(SET_CATEGORY)
+// payload: {category: [{ name: '' }, ...] <Array<Category>} / interface Category { name: string }
 
 
 const initialState = {
   title: '',
-  intro: ''
+  intro: '',
+  category: [{ name: 'list1' }, { name: 'list2' }]
 };
 
 export default function Info(state: any = initialState, action: any) {
@@ -24,6 +28,12 @@ export default function Info(state: any = initialState, action: any) {
       return {
         ...state,
         intro: action.payload.intro,
+      };
+    case SET_CATEGORY:
+      console.log("?")
+      return {
+        ...state,
+        category: action.payload.category,
       };
     default:
       return state;
