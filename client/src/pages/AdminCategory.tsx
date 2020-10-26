@@ -7,6 +7,18 @@ import HrComponent from '../component/HrComponent';
 function Admin() {
   const [categoryName, setCategoryName] = useState('')
   const [category, setCategory] = useState(store.getState().Info.category)
+  const [selected, setSelected] = useState(0)
+
+  function value_check() {
+    const check_count = document.getElementsByName('category').length;
+
+    for(let i=0; i<check_count; i++) {
+      if((document.getElementsByName("category")[i] as any).checked === true) {
+        setSelected(Number((document.getElementsByName("category")[i] as any).value))
+        console.log(selected)
+      }
+    }
+  }
 
   return (
     <div className="Home">
@@ -62,6 +74,20 @@ function Admin() {
               textAlign: 'left',
             }}
           >
+          <button
+            style={{ margin: '3px'}}
+            onClick={() => {
+              value_check()
+            }}
+          >카테고리 추가</button>
+          <button>삭제</button>
+            <div
+              style={{
+                margin: '0 auto',
+                width: '90%',
+                borderTop: '1px solid rgb(230, 230, 230)',
+              }}
+            ></div>
             <ul style={{
               marginTop: '0px',
               listStyleType: 'none',
@@ -73,7 +99,9 @@ function Admin() {
                   style={{
                     display: 'block',
                     margin: '5px'
-                  }}>{list.name}
+                  }}>
+                    <input type="radio" name="category" value={`${id}`}></input>
+                    {' '}<label>{list.name}</label>
                 </li>
               ))}
             </ul>
