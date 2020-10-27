@@ -8,7 +8,6 @@ export class BlogModel {
         id,
       },
     });
-
     return result;
   }
 

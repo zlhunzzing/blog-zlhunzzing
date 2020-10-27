@@ -17,7 +17,25 @@ export class AdminController {
   async setInfoController(req: TokenReq, res:Response): Promise<void> {
     try {
       const result = await service.setInfoService(req.body);
-      res.status(201).send(result);
+      res.status(201).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
+
+  async addCategoryController(req: TokenReq, res:Response): Promise<void> {
+    try {
+      const result = await service.addCategoryService();
+      res.status(201).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
+
+  async deleteCategoryController(req: TokenReq, res:Response): Promise<void> {
+    try {
+      const result = await service.deleteCategoryService(req.params.id);
+      res.status(200).json(result);
     } catch (err) {
       res.status(409).send(err.message);
     }

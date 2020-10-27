@@ -18,7 +18,6 @@ export class GuestService {
   async getCategoryService(): Promise<object> {
     try {
       const result = await categoryModel.findAll();
-      console.log(result);
       return result;
     } catch (err) {
       throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);

@@ -9,6 +9,6 @@ export class CategoryEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: '게시판' })
   name: string;
 }

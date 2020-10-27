@@ -1,8 +1,10 @@
 import jwt from 'jsonwebtoken';
 import { BlogModel } from '../model/BlogModel';
 import { ERROR_MESSAGE } from '../common/errorMessage';
+import { CategoryModel } from '../model/CategoryModel';
 
 const blogModel = new BlogModel();
+const categoryModel = new CategoryModel();
 
 export class AdminService {
   async signinService(password: string): Promise<object> {
@@ -34,5 +36,26 @@ export class AdminService {
     await blogModel.save(result);
 
     return result;
+  }
+
+  async addCategoryService(): Promise<object> {
+    try {
+      await categoryModel.save({});
+      const result = await categoryModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
+  }
+
+  async deleteCategoryService(id): Promise<object> {
+    try {
+      const category = await categoryModel.findWithId(id);
+      await categoryModel.delete(category);
+      const result = await categoryModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
   }
 }

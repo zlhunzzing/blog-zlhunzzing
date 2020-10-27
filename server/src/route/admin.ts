@@ -22,4 +22,8 @@ router.post('/signin', controller.signinController);
 
 router.post('/info', jwtCheck, controller.setInfoController);
 
+router.post('/category', jwtCheck, controller.addCategoryController);
+
+router.delete('/category/:id', jwtCheck, controller.deleteCategoryController);
+
 export default router;

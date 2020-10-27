@@ -8,7 +8,20 @@ export class CategoryModel {
     return result;
   }
 
-  // async save(insertData) {
-  //   await getRepository(CategoryEntity).save(insertData);
-  // }
+  async findWithId(id: number) {
+    const result = await getRepository(CategoryEntity).findOne({
+      where: {
+        id,
+      },
+    });
+    return result;
+  }
+
+  async save(insertData) {
+    await getRepository(CategoryEntity).save(insertData);
+  }
+
+  async delete(deleteData) {
+    await getRepository(CategoryEntity).delete(deleteData);
+  }
 }

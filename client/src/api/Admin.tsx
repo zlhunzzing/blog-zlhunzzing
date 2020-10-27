@@ -42,3 +42,35 @@ export function setInfo(
     })
     .catch((err) => console.log(err.response));
 }
+
+export function addCategory() {
+  return axios
+    .post(`http://${serverIp}/admin/category`,
+      {},
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        }
+      }
+    )
+    .then((res) => {
+      store.dispatch(infoActions.set_category({ category: res.data }))
+    })
+    .catch((err) => console.log(err.response));
+}
+
+export function deleteCategory(id: any) {
+  return axios
+    .delete(`http://${serverIp}/admin/category/${id}`,
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        },
+        data: { id }
+      }
+    )
+    .then((res) => {
+      store.dispatch(infoActions.set_category({ category: res.data }))
+    })
+    .catch((err) => console.log(err.response));
+}

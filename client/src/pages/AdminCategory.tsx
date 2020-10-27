@@ -1,24 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import store from '..';
 import HrComponent from '../component/HrComponent';
-// import * as adminAPI from '../api/Admin'
+import * as adminAPI from '../api/Admin'
+import { useSelector } from 'react-redux';
 
 function Admin() {
   const [categoryName, setCategoryName] = useState('')
-  const [category, setCategory] = useState(store.getState().Info.category)
-  const [selected, setSelected] = useState(0)
+  const category = useSelector((state: any) => state.Info.category);
 
   function value_check() {
     const check_count = document.getElementsByName('category').length;
 
     for(let i=0; i<check_count; i++) {
       if((document.getElementsByName("category")[i] as any).checked === true) {
-        setSelected(Number((document.getElementsByName("category")[i] as any).value))
-        console.log(selected)
+        return Number((document.getElementsByName("category")[i] as any).value)
       }
     }
   }
+
+  useEffect(() => {
+    if((document.getElementsByName("category")[0] as any)) {
+      (document.getElementsByName("category")[0] as any).checked = true
+    }
+  })
 
   return (
     <div className="Home">
@@ -40,7 +44,7 @@ function Admin() {
       }}>카테고리 관리</h4>
       <form onSubmit={(e) => {
         // adminAPI.asd()
-        console.log(categoryName, setCategory)
+        console.log(categoryName)
         e.preventDefault()
       }}>
         <div>
@@ -77,10 +81,16 @@ function Admin() {
           <button
             style={{ margin: '3px'}}
             onClick={() => {
-              value_check()
+              adminAPI.addCategory()
             }}
           >카테고리 추가</button>
-          <button>삭제</button>
+          <button
+            onClick={async (e) => {
+              e.preventDefault()
+              const selected = value_check()
+              adminAPI.deleteCategory(selected)
+            }}
+          >삭제</button>
             <div
               style={{
                 margin: '0 auto',
@@ -100,7 +110,7 @@ function Admin() {
                     display: 'block',
                     margin: '5px'
                   }}>
-                    <input type="radio" name="category" value={`${id}`}></input>
+                    <input type="radio" name="category" value={`${list.id}`}></input>
                     {' '}<label>{list.name}</label>
                 </li>
               ))}

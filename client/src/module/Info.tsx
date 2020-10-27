@@ -30,7 +30,6 @@ export default function Info(state: any = initialState, action: any) {
         intro: action.payload.intro,
       };
     case SET_CATEGORY:
-      console.log("?")
       return {
         ...state,
         category: action.payload.category,

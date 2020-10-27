@@ -18,7 +18,6 @@ export function getCategory() {
   return axios
     .get(`http://${serverIp}/guest/category`)
     .then((res) => {
-        // setCategory(res.data)
         store.dispatch(infoActions.set_category({ category: res.data }))
     })
     .catch((err) => console.log(err.response));
