@@ -48,6 +48,24 @@ export class AdminService {
     }
   }
 
+  async putCategoryService(id, name: any): Promise<object> {
+    try {
+      const category = await categoryModel.findWithId(id);
+
+      const insertData = {
+        ...category,
+        name,
+      };
+
+      await categoryModel.save(insertData);
+
+      const result = await categoryModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
+  }
+
   async deleteCategoryService(id): Promise<object> {
     try {
       const category = await categoryModel.findWithId(id);

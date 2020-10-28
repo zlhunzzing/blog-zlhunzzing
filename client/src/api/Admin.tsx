@@ -59,6 +59,22 @@ export function addCategory() {
     .catch((err) => console.log(err.response));
 }
 
+export function putCategory(id: any, name: any) {
+  return axios
+    .put(`http://${serverIp}/admin/category/${id}`,
+      { name },
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        },
+      }
+    )
+    .then((res) => {
+      store.dispatch(infoActions.set_category({ category: res.data }))
+    })
+    .catch((err) => console.log(err.response));
+}
+
 export function deleteCategory(id: any) {
   return axios
     .delete(`http://${serverIp}/admin/category/${id}`,

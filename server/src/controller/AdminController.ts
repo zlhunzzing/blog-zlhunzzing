@@ -32,6 +32,15 @@ export class AdminController {
     }
   }
 
+  async putCategoryController(req: TokenReq, res:Response): Promise<void> {
+    try {
+      const result = await service.putCategoryService(req.params.id, req.body.name);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
+
   async deleteCategoryController(req: TokenReq, res:Response): Promise<void> {
     try {
       const result = await service.deleteCategoryService(req.params.id);

@@ -43,9 +43,9 @@ function Admin() {
         paddingLeft: '20px'
       }}>카테고리 관리</h4>
       <form onSubmit={(e) => {
-        // adminAPI.asd()
-        console.log(categoryName)
         e.preventDefault()
+        const selected = value_check()
+        adminAPI.putCategory(selected, categoryName)
       }}>
         <div>
           <span style={{
