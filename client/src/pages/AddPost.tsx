@@ -2,15 +2,15 @@ import React from 'react';
 import Category from '../component/Category';
 import HeaderComponent from '../component/HeaderComponent';
 import HrComponent from '../component/HrComponent';
-import PostNewComponent from '../component/PostNewComponent';
+import AddPostComponent from '../component/AddPostComponent';
 import ProfileComponent from '../component/ProfileComponent';
 
-function PostNew() {
+function AddPost() {
   return (
     <div className="Home">
       <HeaderComponent></HeaderComponent>
       <HrComponent></HrComponent>
-      <PostNewComponent></PostNewComponent>
+      <AddPostComponent></AddPostComponent>
       <HrComponent></HrComponent>
       <ProfileComponent></ProfileComponent>
       <Category></Category>
@@ -18,4 +18,4 @@ function PostNew() {
   );
 }
 
-export default PostNew;
+export default AddPost;

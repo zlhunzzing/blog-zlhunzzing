@@ -90,3 +90,21 @@ export function deleteCategory(id: any) {
     })
     .catch((err) => console.log(err.response));
 }
+
+export function addPost(title: string, content: string) {
+  return axios
+    .post(`http://${serverIp}/admin/addpost`,
+      { title, content },
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        }
+      }
+    )
+    .then((res) => {
+      if(res.status === 201) {
+        console.log("작성완료")
+      }
+    })
+    .catch((err) => console.log(err.response));
+}

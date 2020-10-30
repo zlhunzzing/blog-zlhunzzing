@@ -28,4 +28,6 @@ router.put('/category/:id', jwtCheck, controller.putCategoryController);
 
 router.delete('/category/:id', jwtCheck, controller.deleteCategoryController);
 
+router.post('/addPost', jwtCheck, controller.addPostController);
+
 export default router;

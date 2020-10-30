@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import * as api from '../api/Admin'
 
-function PostNewComponent() {
+function AddPostComponent() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const category = useSelector((state: any) => state.Info.category);
@@ -13,13 +14,14 @@ function PostNewComponent() {
   })
 
   return (
-    <form style={{ margin: '10px' }}>
+    <form 
+      onSubmit={(e) => {
+        e.preventDefault()
+        api.addPost(title, content)
+      }}
+      style={{ margin: '10px' }}
+    >
       <span
-        onSubmit={(e) => {
-          e.preventDefault()
-          console.log("읭")
-        }}
-
         style={{
           display: 'inline-block',
           textAlign: 'left',
@@ -70,10 +72,6 @@ function PostNewComponent() {
       >
         <button
           type="submit"
-          onClick={(e) => {
-            e.preventDefault();
-            console.log(title, content);
-          }}
           style={{ margin: '5px '}}
         >
           작성
@@ -110,4 +108,4 @@ function PostNewComponent() {
   );
 }
 
-export default PostNewComponent;
+export default AddPostComponent;

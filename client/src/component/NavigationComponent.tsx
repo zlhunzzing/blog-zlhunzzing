@@ -21,7 +21,7 @@ function NavigationComponent() {
               <Link to="admin">관리</Link>
             </li>
             <li className="nav-item">
-              <Link to="post-new">글쓰기</Link>
+              <Link to="addpost">글쓰기</Link>
             </li>
           </ul>
         </div>

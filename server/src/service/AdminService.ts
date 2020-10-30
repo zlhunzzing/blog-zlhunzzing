@@ -1,10 +1,12 @@
 import jwt from 'jsonwebtoken';
-import { BlogModel } from '../model/BlogModel';
 import { ERROR_MESSAGE } from '../common/errorMessage';
+import { BlogModel } from '../model/BlogModel';
 import { CategoryModel } from '../model/CategoryModel';
+import { PostModel } from '../model/PostModel';
 
 const blogModel = new BlogModel();
 const categoryModel = new CategoryModel();
+const postModel = new PostModel();
 
 export class AdminService {
   async signinService(password: string): Promise<object> {
@@ -75,5 +77,13 @@ export class AdminService {
     } catch (err) {
       throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
     }
+  }
+
+  async addPostService(data: object): Promise<void> {
+    const insertData = {
+      ...data,
+    };
+
+    await postModel.save(insertData);
   }
 }

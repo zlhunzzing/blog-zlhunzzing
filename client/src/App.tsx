@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Admin from './pages/Admin'
 import AdminInfo from './pages/AdminInfo';
 import AdminCategory from './pages/AdminCategory';
-import PostNew from './pages/PostNew';
+import AddPost from './pages/AddPost';
 
 /* component */
 import NavigationComponent from './component/NavigationComponent';
@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <NavigationComponent></NavigationComponent>
       <Switch>
-        <Route path="/post-new" render={() => <PostNew></PostNew>}></Route>
+        <Route path="/addpost" render={() => <AddPost></AddPost>}></Route>
         <Route path="/admin/category" render={() => <AdminCategory></AdminCategory>}></Route>
         <Route path="/admin/info" render={() => <AdminInfo></AdminInfo>}></Route>
         <Route path="/admin" render={() => <Admin></Admin>}></Route>
