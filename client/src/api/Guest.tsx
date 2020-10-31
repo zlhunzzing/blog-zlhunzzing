@@ -22,3 +22,12 @@ export function getCategory() {
     })
     .catch((err) => console.log(err.response));
 }
+
+export function getPosts() {
+  return axios
+    .get(`http://${serverIp}/guest/posts`)
+    .then((res) => {
+        store.dispatch(infoActions.set_posts({ posts: res.data }))
+    })
+    .catch((err) => console.log(err.response));
+}

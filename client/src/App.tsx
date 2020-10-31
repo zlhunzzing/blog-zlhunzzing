@@ -17,6 +17,7 @@ function App() {
   useEffect(() => {
     guestAPI.getInfo()
     guestAPI.getCategory()
+    guestAPI.getPosts()
   })
   
   return (
