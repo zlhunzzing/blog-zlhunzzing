@@ -102,9 +102,9 @@ export function addPost(title: string, content: string) {
       }
     )
     .then((res) => {
-      if(res.status === 201) {
-        console.log("작성완료")
-      }
+      store.dispatch(infoActions.set_posts({ posts: res.data }))
+      // history
+      console.log('작성완료')
     })
     .catch((err) => console.log(err.response));
 }

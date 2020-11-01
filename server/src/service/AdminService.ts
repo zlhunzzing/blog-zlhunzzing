@@ -79,11 +79,18 @@ export class AdminService {
     }
   }
 
-  async addPostService(data: object): Promise<void> {
-    const insertData = {
-      ...data,
-    };
+  async addPostService(data: object): Promise<object> {
+    try {
+      const insertData = {
+        ...data,
+      };
 
-    await postModel.save(insertData);
+      await postModel.save(insertData);
+
+      const result = await postModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
   }
 }

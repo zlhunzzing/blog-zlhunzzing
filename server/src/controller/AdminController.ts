@@ -52,8 +52,8 @@ export class AdminController {
 
   async addPostController(req: TokenReq, res:Response): Promise<void> {
     try {
-      await service.addPostService(req.body);
-      res.status(201).end();
+      const result = await service.addPostService(req.body);
+      res.status(201).json(result);
     } catch (err) {
       res.status(409).send(err.message);
     }
