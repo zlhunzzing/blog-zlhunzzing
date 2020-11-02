@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import store from '..';
 
 function PostListComponent() {
   const posts = useSelector((state: any) => state.Info.posts);
+  const [currentPage, setCurrentPage] = useState(1)
+  const postIndex = useSelector((state: any) => state.Info.postsRange)
 
   return (
     <div
@@ -33,7 +35,8 @@ function PostListComponent() {
           <span>글 제목</span>
           <span style={{ float: "right" }}>작성일</span>
         </div>
-        {posts.map((post: any, id: number) => (
+        {posts[currentPage - 1] ?
+          posts[currentPage - 1].map((post: any, id: number) => (
           <li
             key={id} 
             style={{
@@ -44,7 +47,28 @@ function PostListComponent() {
             <span>{post.title}</span>
             <span style={{ float: "right" }}>{store.getState().Handle.momenter(post.createdAt, "YYYY.MM.DD")}</span>
           </li>
-        ))}
+        )) : null}
+      </ul>
+      <ul style={{ textAlign: 'center' }}>
+        {postIndex[0] ? (
+          postIndex[0].map((page: any, id: number) => (
+            <li
+              key={id}
+              onClick={() => {
+                setCurrentPage(page);
+              }}
+            >
+              <a
+                href={`#${page}`}
+                style={{
+                  padding: '4px',
+                  textDecoration: 'none',
+                  color: 'black'
+                }}
+              >{page}</a>
+            </li>
+          ))
+        ) : null}
       </ul>
     </div>
   );

@@ -55,3 +55,11 @@ ul li {
   padding: 5px;
   color: rgb(75, 75, 75);
 }
+
+ul li a:focus {
+  font-weight: bold;
+}
+
+ul li a:hover {
+  font-weight: bold;
+}

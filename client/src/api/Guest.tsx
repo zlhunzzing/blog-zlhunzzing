@@ -27,7 +27,10 @@ export function getPosts() {
   return axios
     .get(`http://${serverIp}/guest/posts`)
     .then((res) => {
-        store.dispatch(infoActions.set_posts({ posts: res.data }))
+      const data = store.getState().Handle.paging(res.data, 5)
+      store.dispatch(infoActions.set_posts({ posts: data }))
+      const range = store.getState().Handle.ranging(data.length, 10)
+      store.dispatch(infoActions.set_posts_range({ postsRange: range }))
     })
     .catch((err) => console.log(err.response));
 }
