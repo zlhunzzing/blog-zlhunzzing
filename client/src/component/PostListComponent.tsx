@@ -3,29 +3,26 @@ import { useSelector } from 'react-redux';
 import store from '..';
 
 function PostListComponent() {
+  const [isView, setIsView] = useState(true)
   const posts = useSelector((state: any) => state.Info.posts);
   const [currentPage, setCurrentPage] = useState(1)
   const postIndex = useSelector((state: any) => state.Info.postsRange)
 
-  return (
+  return isView ? (
     <div
       style={{
         textAlign: 'left',
       }}
     >
-      <h5 style={{ margin: 0 }}>전체글보기</h5>
-      <div
-        style={{
-          margin: '0 auto',
-          width: '100%',
-          borderTop: '1px solid rgb(170, 170, 170)',
-        }}
-      ></div>
+      <h5 style={{ margin: 0, cursor: 'pointer' }}
+          onClick={() => {
+            setIsView(false)
+          }}
+      >전체글보기</h5>
       <ul
         style={{
-          marginTop: '0px',
           listStyleType: 'none',
-          paddingLeft: '5px'
+          paddingLeft: '5px',
         }}
       >
         <div
@@ -34,6 +31,13 @@ function PostListComponent() {
           }}>
           <span>글 제목</span>
           <span style={{ float: "right" }}>작성일</span>
+          <div
+            style={{
+              margin: '0 auto',
+              width: '100%',
+              borderTop: '1px solid rgb(170, 170, 170)',
+            }}
+          ></div>
         </div>
         {posts[currentPage - 1] ?
           posts[currentPage - 1].map((post: any, id: number) => (
@@ -71,7 +75,19 @@ function PostListComponent() {
         ) : null}
       </ul>
     </div>
-  );
+  ) : <div
+        style={{
+          textAlign: 'left',
+          paddingBottom: '10px'
+        }}
+      >
+        <h5
+          style={{ margin: 0, cursor: 'pointer' }}
+          onClick={() => {
+            setIsView(true)
+          }}
+        >전체글보기</h5>
+      </div>;
 }
 
 export default PostListComponent;
