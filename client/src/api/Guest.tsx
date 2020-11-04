@@ -34,3 +34,13 @@ export function getPosts() {
     })
     .catch((err) => console.log(err.response));
 }
+
+
+export function getPost(id: number) {
+  return axios
+    .get(`http://${serverIp}/guest/post/${id}`)
+    .then((res) => {
+      store.dispatch(infoActions.set_current_post({ currentPost: res.data }))
+    })
+    .catch((err) => console.log(err.response));
+}

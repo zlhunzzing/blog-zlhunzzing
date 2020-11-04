@@ -26,9 +26,18 @@ export class GuestService {
     }
   }
 
-  async getPostService(): Promise<object> {
+  async getPostsService(): Promise<object> {
     try {
       const result = await postModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
+  }
+
+  async getPostService(id): Promise<object> {
+    try {
+      const result = await postModel.findWithId(id);
       return result;
     } catch (err) {
       throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);

@@ -63,3 +63,8 @@ ul li a:focus {
 ul li a:hover {
   font-weight: bold;
 }
+
+li a {
+  text-decoration: none;
+  color: black;
+}

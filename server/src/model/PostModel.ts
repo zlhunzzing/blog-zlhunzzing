@@ -8,6 +8,16 @@ export class PostModel {
     return result;
   }
 
+  async findWithId(id: number) {
+    const result = await getRepository(PostEntity).findOne({
+      where: {
+        id,
+      },
+    });
+    return result;
+  }
+
+
   async save(insertData) {
     await getRepository(PostEntity).save(insertData);
   }

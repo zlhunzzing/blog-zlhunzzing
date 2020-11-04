@@ -8,6 +8,8 @@ router.get('/info', controller.getInfoController);
 
 router.get('/category', controller.getCategoryController);
 
-router.get('/posts', controller.getPostController);
+router.get('/posts', controller.getPostsController);
+
+router.get('/post/:id', controller.getPostController);
 
 export default router;

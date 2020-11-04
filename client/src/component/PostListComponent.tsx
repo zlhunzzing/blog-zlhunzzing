@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import store from '..';
 
@@ -48,7 +49,7 @@ function PostListComponent() {
               display: 'block',
             }}
           >
-            <span>{post.title}</span>
+            <Link to={`${post.id}`}>{post.title}</Link>
             <span style={{ float: "right" }}>{store.getState().Handle.momenter(post.createdAt, "YYYY.MM.DD")}</span>
           </li>
         )) : null}

@@ -22,9 +22,18 @@ export class GuestController {
     }
   }
 
+  async getPostsController(req: Request, res:Response): Promise<void> {
+    try {
+      const result = await service.getPostsService();
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
+
   async getPostController(req: Request, res:Response): Promise<void> {
     try {
-      const result = await service.getPostService();
+      const result = await service.getPostService(req.params.id);
       res.status(200).json(result);
     } catch (err) {
       res.status(409).send(err.message);
