@@ -23,10 +23,11 @@ export function getCategory() {
     .catch((err) => console.log(err.response));
 }
 
-export function getPosts() {
+export function getPosts(id = 0) {
   return axios
-    .get(`http://${serverIp}/guest/posts`)
+    .get(`http://${serverIp}/guest/posts/${id}`)
     .then((res) => {
+      if(!Array.isArray(res.data)) res.data = [res.data]
       const data = store.getState().Handle.paging(res.data, 5)
       store.dispatch(infoActions.set_posts({ posts: data }))
       const range = store.getState().Handle.ranging(data.length, 10)

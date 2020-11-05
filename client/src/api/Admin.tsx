@@ -91,10 +91,10 @@ export function deleteCategory(id: any) {
     .catch((err) => console.log(err.response));
 }
 
-export function addPost(title: string, content: string) {
+export function addPost(title: string, content: string, categoryId: number) {
   return axios
     .post(`http://${serverIp}/admin/addpost`,
-      { title, content },
+      { title, content, categoryId },
       {
         headers: {
           Authorization: store.getState().Auth.token,

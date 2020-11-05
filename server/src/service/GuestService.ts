@@ -26,8 +26,13 @@ export class GuestService {
     }
   }
 
-  async getPostsService(): Promise<object> {
+  async getPostsService(id): Promise<object> {
     try {
+      if (Number(id)) {
+        const result = await postModel.findWithCategoryId(id);
+        console.log(result);
+        return result;
+      }
       const result = await postModel.findAll();
       return result;
     } catch (err) {

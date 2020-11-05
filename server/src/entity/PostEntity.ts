@@ -17,6 +17,9 @@ export class PostEntity {
   @Column()
   content: string;
 
+  @Column()
+  categoryId: number
+
   @CreateDateColumn()
   createdAt: Date;
 

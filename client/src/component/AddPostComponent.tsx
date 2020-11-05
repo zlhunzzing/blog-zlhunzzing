@@ -7,6 +7,16 @@ function AddPostComponent() {
   const [content, setContent] = useState('');
   const category = useSelector((state: any) => state.Info.category);
 
+  function value_check() {
+    const check_count = document.getElementsByName('category').length;
+
+    for(let i=0; i<check_count; i++) {
+      if((document.getElementsByName("category")[i] as any).checked === true) {
+        return Number((document.getElementsByName("category")[i] as any).value)
+      }
+    }
+  }
+
   useEffect(() => {
     if((document.getElementsByName("category")[0] as any)) {
       (document.getElementsByName("category")[0] as any).checked = true
@@ -17,7 +27,8 @@ function AddPostComponent() {
     <form 
       onSubmit={(e) => {
         e.preventDefault()
-        api.addPost(title, content)
+        const categoryId = Number(value_check())
+        api.addPost(title, content, categoryId)
       }}
       style={{ margin: '10px' }}
     >

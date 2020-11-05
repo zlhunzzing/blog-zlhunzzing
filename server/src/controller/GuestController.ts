@@ -24,7 +24,7 @@ export class GuestController {
 
   async getPostsController(req: Request, res:Response): Promise<void> {
     try {
-      const result = await service.getPostsService();
+      const result = await service.getPostsService(req.params.id);
       res.status(200).json(result);
     } catch (err) {
       res.status(409).send(err.message);

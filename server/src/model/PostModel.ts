@@ -17,6 +17,15 @@ export class PostModel {
     return result;
   }
 
+  async findWithCategoryId(id: number) {
+    const result = await getRepository(PostEntity).findOne({
+      where: {
+        categoryId: id,
+      },
+    });
+    return result;
+  }
+
 
   async save(insertData) {
     await getRepository(PostEntity).save(insertData);
