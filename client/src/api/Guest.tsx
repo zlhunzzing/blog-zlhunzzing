@@ -30,6 +30,7 @@ export function getPosts(id = 0) {
       if(!Array.isArray(res.data)) res.data = [res.data]
       const data = store.getState().Handle.paging(res.data, 5)
       store.dispatch(infoActions.set_posts({ posts: data }))
+      store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
       const range = store.getState().Handle.ranging(data.length, 10)
       store.dispatch(infoActions.set_posts_range({ postsRange: range }))
     })

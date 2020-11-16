@@ -104,6 +104,7 @@ export function addPost(title: string, content: string, categoryId: number) {
     .then((res) => {
       const data = store.getState().Handle.paging(res.data, 5)
       store.dispatch(infoActions.set_posts({ posts: data }))
+      store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
       const range = store.getState().Handle.ranging(data.length, 10)
       store.dispatch(infoActions.set_posts_range({ postsRange: range }))
       // history
