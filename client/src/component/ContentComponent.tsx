@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import * as guestAPI from '../api/Guest'
+import store from '..'
 
 function ContentComponent() {
   const params = Number(document.location.pathname.slice(1))
@@ -26,6 +27,12 @@ function ContentComponent() {
             fontSize: '30px',
           }}
         >{post.title}</div>
+
+        <div>
+          <span>{store.getState().Handle.momenter(post.createdAt, "YYYY.MM.DD")}</span>
+          {" "}<button>수정</button>
+          {" "}<button>삭제</button>
+        </div>
 
         <div
           style={{
