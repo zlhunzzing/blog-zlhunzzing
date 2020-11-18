@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import * as guestAPI from '../api/Guest'
 import store from '..'
@@ -30,7 +31,10 @@ function ContentComponent() {
 
         <div>
           <span>{store.getState().Handle.momenter(post.createdAt, "YYYY.MM.DD")}</span>
-          {" "}<button>수정</button>
+          {" "}
+          <Link to='editpost'>
+            <button>수정</button>
+          </Link>
           {" "}<button>삭제</button>
         </div>
 

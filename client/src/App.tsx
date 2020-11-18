@@ -9,6 +9,7 @@ import Admin from './pages/Admin'
 import AdminInfo from './pages/AdminInfo';
 import AdminCategory from './pages/AdminCategory';
 import AddPost from './pages/AddPost';
+import EditPost from './pages/EditPost';
 
 /* component */
 import NavigationComponent from './component/NavigationComponent';
@@ -24,6 +25,7 @@ function App() {
     <div className="App">
       <NavigationComponent></NavigationComponent>
       <Switch>
+        <Route path="/editpost" render={() => <EditPost></EditPost>}></Route>
         <Route path="/addpost" render={() => <AddPost></AddPost>}></Route>
         <Route path="/admin/category" render={() => <AdminCategory></AdminCategory>}></Route>
         <Route path="/admin/info" render={() => <AdminInfo></AdminInfo>}></Route>
