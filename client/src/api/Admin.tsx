@@ -91,7 +91,7 @@ export function deleteCategory(id: any) {
     .catch((err) => console.log(err.response));
 }
 
-export function addPost(title: string, content: string, categoryId: number) {
+export function addPost(title: string, content: string, categoryId: number, history: any) {
   return axios
     .post(`http://${serverIp}/admin/addpost`,
       { title, content, categoryId },
@@ -107,30 +107,28 @@ export function addPost(title: string, content: string, categoryId: number) {
       store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
       const range = store.getState().Handle.ranging(data.length, 10)
       store.dispatch(infoActions.set_posts_range({ postsRange: range }))
-      // history
-      console.log('작성완료')
+      history.push('/')
     })
     .catch((err) => console.log(err.response));
 }
 
-// export function editPost(title: string, content: string, categoryId: number, postId: number) {
-//   return axios
-//     .put(`http://${serverIp}/admin/editpost/${postId}`,
-//       { title, content, categoryId },
-//       {
-//         headers: {
-//           Authorization: store.getState().Auth.token,
-//         }
-//       }
-//     )
-//     .then((res) => {
-//       const data = store.getState().Handle.paging(res.data, 5)
-//       store.dispatch(infoActions.set_posts({ posts: data }))
-//       store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
-//       const range = store.getState().Handle.ranging(data.length, 10)
-//       store.dispatch(infoActions.set_posts_range({ postsRange: range }))
-//       // history
-//       console.log('수정완료')
-//     })
-//     .catch((err) => console.log(err.response));
-// }
+export function editPost(title: string, content: string, categoryId: number, postId: number, history: any) {
+  return axios
+    .put(`http://${serverIp}/admin/editpost/${postId}`,
+      { title, content, categoryId },
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        }
+      }
+    )
+    .then((res) => {
+      const data = store.getState().Handle.paging(res.data, 5)
+      store.dispatch(infoActions.set_posts({ posts: data }))
+      store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
+      const range = store.getState().Handle.ranging(data.length, 10)
+      store.dispatch(infoActions.set_posts_range({ postsRange: range }))
+      history.push('/')
+    })
+    .catch((err) => console.log(err.response));
+}

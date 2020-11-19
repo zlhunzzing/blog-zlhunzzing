@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as api from '../api/Admin'
+import { useHistory } from 'react-router-dom';
 
 function EditPostComponent() {
   const post = useSelector((state: any) => state.Info.currentPost)
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
   const category = useSelector((state: any) => state.Info.category);
+  const history = useState(useHistory())[0]
 
   function value_check() {
     const check_count = document.getElementsByName('category').length;
@@ -29,7 +31,7 @@ function EditPostComponent() {
       onSubmit={(e) => {
         e.preventDefault()
         const categoryId = Number(value_check())
-        // api.editPost(title, content, categoryId, post.id)
+        api.editPost(title, content, categoryId, post.id, history)
       }}
       style={{ margin: '10px' }}
     >

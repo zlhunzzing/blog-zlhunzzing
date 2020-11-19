@@ -58,4 +58,13 @@ export class AdminController {
       res.status(409).send(err.message);
     }
   }
+
+  async editPostController(req: TokenReq, res:Response): Promise<void> {
+    try {
+      const result = await service.editPostService(req.body, req.params.id);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
 }

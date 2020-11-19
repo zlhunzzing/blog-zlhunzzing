@@ -30,7 +30,6 @@ export class GuestService {
     try {
       if (Number(id)) {
         const result = await postModel.findWithCategoryId(id);
-        console.log(result);
         return result;
       }
       const result = await postModel.findAll();

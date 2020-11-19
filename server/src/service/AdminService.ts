@@ -93,4 +93,22 @@ export class AdminService {
       throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
     }
   }
+
+  async editPostService(data, postId): Promise<object> {
+    try {
+      const post = await postModel.findWithId(postId);
+
+      const insertData = {
+        ...post,
+        ...data,
+      };
+
+      await postModel.save(insertData);
+
+      const result = await postModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
+  }
 }

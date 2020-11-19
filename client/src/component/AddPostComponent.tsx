@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import * as api from '../api/Admin'
+import { useHistory } from 'react-router-dom';
 
 function AddPostComponent() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const category = useSelector((state: any) => state.Info.category);
+  const history = useState(useHistory())[0]
 
   function value_check() {
     const check_count = document.getElementsByName('category').length;
@@ -28,7 +30,7 @@ function AddPostComponent() {
       onSubmit={(e) => {
         e.preventDefault()
         const categoryId = Number(value_check())
-        api.addPost(title, content, categoryId)
+        api.addPost(title, content, categoryId, history)
       }}
       style={{ margin: '10px' }}
     >
