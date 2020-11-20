@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import * as adminAPI from '../api/Admin'
 import * as guestAPI from '../api/Guest'
 import store from '..'
 
 function ContentComponent() {
   const params = Number(document.location.pathname.slice(1))
   const post = useSelector((state: any) => state.Info.currentPost)
+  const history = useState(useHistory())[0]
 
   useEffect(() => {
     if(params) guestAPI.getPost(params)
@@ -35,7 +38,8 @@ function ContentComponent() {
           <Link to='editpost'>
             <button>수정</button>
           </Link>
-          {" "}<button>삭제</button>
+          {" "}
+          <button onClick={() => { adminAPI.deletePost(post.id, history) }}>삭제</button>
         </div>
 
         <div

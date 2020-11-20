@@ -82,7 +82,6 @@ export function deleteCategory(id: any) {
         headers: {
           Authorization: store.getState().Auth.token,
         },
-        data: { id }
       }
     )
     .then((res) => {
@@ -120,6 +119,26 @@ export function editPost(title: string, content: string, categoryId: number, pos
         headers: {
           Authorization: store.getState().Auth.token,
         }
+      }
+    )
+    .then((res) => {
+      const data = store.getState().Handle.paging(res.data, 5)
+      store.dispatch(infoActions.set_posts({ posts: data }))
+      store.dispatch(infoActions.set_current_post({ currentPost: data[0][0] }))
+      const range = store.getState().Handle.ranging(data.length, 10)
+      store.dispatch(infoActions.set_posts_range({ postsRange: range }))
+      history.push('/')
+    })
+    .catch((err) => console.log(err.response));
+}
+
+export function deletePost(id: any, history: any) {
+  return axios
+    .delete(`http://${serverIp}/admin/${id}`,
+      {
+        headers: {
+          Authorization: store.getState().Auth.token,
+        },
       }
     )
     .then((res) => {

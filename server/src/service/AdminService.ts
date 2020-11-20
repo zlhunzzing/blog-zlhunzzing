@@ -70,8 +70,8 @@ export class AdminService {
 
   async deleteCategoryService(id): Promise<object> {
     try {
-      const category = await categoryModel.findWithId(id);
-      await categoryModel.delete(category);
+      await categoryModel.delete(id);
+
       const result = await categoryModel.findAll();
       return result;
     } catch (err) {
@@ -104,6 +104,17 @@ export class AdminService {
       };
 
       await postModel.save(insertData);
+
+      const result = await postModel.findAll();
+      return result;
+    } catch (err) {
+      throw new Error(ERROR_MESSAGE.NOT_FOUND_INFO);
+    }
+  }
+
+  async deletePostService(id): Promise<object> {
+    try {
+      await postModel.delete(id);
 
       const result = await postModel.findAll();
       return result;

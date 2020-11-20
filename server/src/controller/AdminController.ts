@@ -67,4 +67,13 @@ export class AdminController {
       res.status(409).send(err.message);
     }
   }
+
+  async deletePostController(req: TokenReq, res:Response): Promise<void> {
+    try {
+      const result = await service.deletePostService(req.params.id);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(409).send(err.message);
+    }
+  }
 }

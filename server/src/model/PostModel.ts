@@ -30,4 +30,8 @@ export class PostModel {
   async save(insertData) {
     await getRepository(PostEntity).save(insertData);
   }
+
+  async delete(deleteDataId) {
+    await getRepository(PostEntity).delete(deleteDataId);
+  }
 }

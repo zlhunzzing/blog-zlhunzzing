@@ -21,7 +21,7 @@ export class CategoryModel {
     await getRepository(CategoryEntity).save(insertData);
   }
 
-  async delete(deleteData) {
-    await getRepository(CategoryEntity).delete(deleteData);
+  async delete(deleteDataId) {
+    await getRepository(CategoryEntity).delete(deleteDataId);
   }
 }
